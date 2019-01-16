@@ -1,11 +1,14 @@
 import React from "react";
 import BotCollection from "./BotCollection.js";
 import YourBotArmy from "./YourBotArmy";
+import BotSpecs from "../components/BotSpecs.js";
 
 class BotsPage extends React.Component {
   state = {
     allRobots: [],
-    armyRobots: []
+    armyRobots: [],
+    toggle: false,
+    currentBot: {}
   };
 
   componentDidMount() {
@@ -18,12 +21,21 @@ class BotsPage extends React.Component {
       });
   }
 
+  toggleOn = (e, bot) => {
+    console.log(bot);
+    this.setState({
+      toggle: !this.state.toggle,
+      currentBot: bot
+    });
+  };
+
   addToArmy = (e, bot) => {
     let output = [...this.state.armyRobots, bot];
 
     if (!this.state.armyRobots.includes(bot)) {
       this.setState({
-        armyRobots: output
+        armyRobots: output,
+        toggle: false
       });
     }
   };
@@ -46,10 +58,19 @@ class BotsPage extends React.Component {
           armyHandler={this.removeFromArmy}
         />
 
-        <BotCollection
-          allRobots={this.state.allRobots}
-          armyHandler={this.addToArmy}
-        />
+        {this.state.toggle ? (
+          <BotSpecs
+            bot={this.state.currentBot}
+            toggleOff={this.toggleOn}
+            addToArmy={this.addToArmy}
+          />
+        ) : (
+          <BotCollection
+            allRobots={this.state.allRobots}
+            armyHandler={this.addToArmy}
+            toggleOn={this.toggleOn}
+          />
+        )}
       </div>
     );
   }

@@ -9,6 +9,7 @@ class BotCollection extends React.Component {
           key={robot.id}
           bot={robot}
           armyHandler={this.props.armyHandler}
+          toggle={this.props.toggleOn}
         />
       );
     });
