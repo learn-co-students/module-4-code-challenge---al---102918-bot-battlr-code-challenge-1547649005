@@ -37,7 +37,7 @@ class App extends Component {
     return (
       <div className="App">
         <SearchForm searchHandler={this.searchHandler} />
-        <BotsPage botList={this.state.filteredBotList} />
+        <BotsPage botList={this.state.filteredBotList }  searchHandler={this.searchHandler}/>
       </div>
     );
   }

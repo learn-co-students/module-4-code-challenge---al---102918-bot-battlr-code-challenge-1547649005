@@ -45,6 +45,7 @@ class BotsPage extends React.Component {
           botList={this.state.chosen}
           clickHandler={this.clickRemoveHandler}
         />
+        
 
         {this.state.showBotSpecs ? (
           <BotSpecs
