@@ -17,21 +17,30 @@ class BotsPage extends React.Component {
 
   renderBotInArmy = bot => {
     console.log("rendered!", bot.state.clicked);
-    if (bot.state.clicked === true) {
-      console.log("true");
-      let newClickedBot = [...this.state.clickedBots, bot];
-      this.setState({
-        clickedBots: newClickedBot
-      });
-      console.log(this.state);
+    if (bot.props.parent === "BotCollection") {
+      if (bot.state.clicked === true) {
+        console.log("true");
+        let newClickedBot = [...this.state.clickedBots, bot];
+        this.setState({
+          clickedBots: newClickedBot
+        });
+        console.log(this.state);
+      } else null;
+    } else {
+      console.log("from");
     }
   };
 
   render() {
     return (
       <div>
-        <YourBotArmy bots={this.state.clickedBots} />
+        <YourBotArmy
+          parent="YourBotArmy"
+          bots={this.state.clickedBots}
+          renderBotInArmy={this.renderBotInArmy}
+        />
         <BotCollection
+          parent="BotCollection"
           bots={this.state.bots}
           renderBotInArmy={this.renderBotInArmy}
         />

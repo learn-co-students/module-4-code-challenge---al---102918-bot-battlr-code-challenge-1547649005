@@ -13,6 +13,7 @@ class BotCard extends React.Component {
   };
 
   render() {
+    console.log(this.props.parent);
     const { bot } = this.props;
 
     let botType;
