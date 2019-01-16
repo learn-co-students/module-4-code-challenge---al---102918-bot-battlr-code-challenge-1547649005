@@ -2,21 +2,36 @@ import React from "react";
 import BotCard from "../components/BotCard";
 
 class YourBotArmy extends React.Component {
-  //your bot army code here...
+
+  botList = () => this.props.bots.map(bot => {
+    return (
+      <BotCard
+        key = {bot.id}
+        bot = {bot}
+        handleClick = {this.props.handleClick}
+      />
+    )
+  })
 
   render(){
     return (
+
       <div className="ui segment inverted olive bot-army">
+      <select onChange= {this.props.changeHandler} className = "filter-dropdown">
+        <option value ='' >Filter by Class </option>
+        <option value = 'support'>Support</option>
+        <option value = 'assault'>Assault</option>
+        <option value = 'defender'>Defender</option>
+      </select>
         <div className="ui five column grid">
           <div className="row bot-army-row">
-            {/*...and here...*/}
-            Your Bot Army
+            {this.botList()}
           </div>
         </div>
       </div>
     );
   }
-  
+
 };
 
 export default YourBotArmy;
