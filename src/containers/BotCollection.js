@@ -2,14 +2,31 @@ import React from "react";
 import BotCard from "../components/BotCard";
 
 class BotCollection extends React.Component {
-  //your code here
+
+  hidden = {
+    display: 'none'
+  }
+
+  shown = {
+    display: 'block'
+  }
+
+  botList = () => this.props.bots.map(bot => {
+    return (
+      <BotCard
+        key = {bot.id}
+        bot = {bot}
+        handleClick = {this.props.handleClick}
+        display = {this.props.display}
+      />
+    )
+  })
 
   render(){
   	return (
-  	  <div className="ui four column grid">
+  	  <div style = {this.props.display ? this.shown : this.hidden}className="ui four column grid botCollection">
     		<div className="row">
-    		  {/*...and here..*/}
-    		  Collection of all bots
+          {this.botList()}
     		</div>
   	  </div>
   	);

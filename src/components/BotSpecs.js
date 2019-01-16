@@ -2,6 +2,12 @@ import React from "react";
 
 const BotSpecs = props => {
   let { bot } = props;
+  let hidden = {
+    display: "none"
+  }
+  let shown = {
+    display: 'block'
+  }
 
   let botType;
 
@@ -20,7 +26,7 @@ const BotSpecs = props => {
   }
 
   return (
-    <div className="ui segment">
+    <div style = {props.display? hidden : shown} className="ui segment">
       <div className="ui two column centered grid">
         <div className="row">
           <div className="four wide column">
@@ -60,19 +66,13 @@ const BotSpecs = props => {
             </div>
             <button
               className="ui button fluid"
-              onClick={() =>
-                console.log('connect this to a function that shows all bots')
-              }
+              onClick={props.toggleDisplay}
             >
               Go Back
             </button>
             <button
               className="ui button fluid"
-              onClick={() =>
-                console.log(
-                  "connect this to a function that adds this bot to your bot army list"
-                )
-              }
+              onClick={() => props.enlist(props.bot)}
             >
               Enlist
             </button>
