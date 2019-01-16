@@ -15,11 +15,18 @@ class YourBotArmy extends React.Component {
 
   render(){
     return (
+
       <div className="ui segment inverted olive bot-army">
         <div className="ui five column grid">
           <div className="row bot-army-row">
             {this.botList()}
           </div>
+            <select onChange= {this.props.changeHandler}>
+              <option value ='' >Filter by Class </option>
+              <option value = 'support'>Support</option>
+              <option value = 'assault'>Assault</option>
+              <option value = 'defender'>Defender</option>
+            </select>
         </div>
       </div>
     );

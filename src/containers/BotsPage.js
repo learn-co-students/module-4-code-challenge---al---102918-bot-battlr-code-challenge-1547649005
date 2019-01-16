@@ -7,16 +7,19 @@ class BotsPage extends React.Component {
 
   state = {
     botArr : [],
+    filteredBots: [],
     armyArr : [],
     display: true,
-    bot: {}
+    bot: {},
+    search: ''
   }
 
   componentDidMount() {
     fetch('https://bot-battler-api.herokuapp.com/api/v1/bots')
       .then(res => res.json())
       .then(data => this.setState({
-        botArr: data
+        botArr: data,
+        filteredBots: data
       }))
   }
 
@@ -53,18 +56,26 @@ class BotsPage extends React.Component {
   }
 
 
+  changeHandler = (e) => {
+    let newArr = [...this.state.botArr].filter(bot => bot.bot_class.toLowerCase().includes(e.target.value))
+
+    this.setState({
+      filteredBots: newArr
+    })
+  }
+
 
   render() {
-    console.log(this.state.armyArr);
     return (
       <div>
         <YourBotArmy
           bots = {this.state.armyArr}
           handleClick = {this.enlist}
+          changeHandler = {this.changeHandler}
         />
         <BotCollection
           display = {this.state.display}
-          bots = {this.state.botArr}
+          bots = {this.state.filteredBots}
           handleClick = {this.handleClick}
         />
         <BotSpecs
