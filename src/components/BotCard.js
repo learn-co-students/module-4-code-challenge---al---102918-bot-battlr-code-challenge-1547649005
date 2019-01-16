@@ -19,12 +19,18 @@ const BotCard = props => {
       botType = <div />;
   }
 
+
+
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        // style= {this.props.clicked ? "display : block" : "display : hidden"}
+        onClick={() =>
+          // console.log('test')
+          props.handleClick
+        }
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
