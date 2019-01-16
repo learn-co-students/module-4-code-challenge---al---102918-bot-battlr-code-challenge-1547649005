@@ -19,7 +19,6 @@ class BotsPage extends React.Component {
     console.log("rendered!", bot.state.clicked);
     if (bot.props.parent === "BotCollection") {
       if (bot.state.clicked === true) {
-        console.log("true");
         let newClickedBot = [...this.state.clickedBots, bot];
         this.setState({
           clickedBots: newClickedBot
