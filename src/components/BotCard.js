@@ -19,6 +19,7 @@ const BotCard = props => {
       botType = <div />;
   }
 
+
   return (
     <div className="ui column">
       <div
@@ -33,7 +34,6 @@ const BotCard = props => {
           <div className="header">
             {bot.name} {botType}
           </div>
-
           <div className="meta text-wrap">
             <small>{bot.catchphrase}</small>
           </div>

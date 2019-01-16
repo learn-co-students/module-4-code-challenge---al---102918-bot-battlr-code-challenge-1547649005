@@ -5,6 +5,22 @@ import BotSpecs from '../components/BotSpecs'
 class BotCollection extends React.Component {
   //your code here
 
+  state={
+    clicked: false
+  }
+
+  seeSelectedBot = (bot) => {
+    console.log(bot)
+  }
+
+  backButton = () =>{
+    let click = this.state.clicked
+    console.log(click)
+    this.setState({
+      clicked: !click
+    })
+  }
+
   render(){
 
   	return (
@@ -15,11 +31,15 @@ class BotCollection extends React.Component {
             <BotCard
               key={bot.id}
               bot={bot}
+              seeSelectedBot={this.seeSelectedBot}
               />
             <BotSpecs
               key={bot.id}
               bot={bot}
-              addToArmy={this.props.addToArmy}/>
+              addToArmy={this.props.addToArmy}
+              backButton={this.backButton}
+              style={{display: this.state.clicked ? 'block' : 'none'}}
+              />
             </div>
           ))}
     		</div>
@@ -30,4 +50,3 @@ class BotCollection extends React.Component {
 };
 
 export default BotCollection;
-// {this.state.botCardClicked ? <BotSpecs key={bot.id} bot={bot}/> : null}

@@ -33,12 +33,16 @@ class BotsPage extends React.Component {
 
   removeFromArmy = (bot) => {
     let army = [...this.state.myArmy]
-    let botInArr = army.indexOf(bot)
-    let removedBot = botInArr != -1 ? army.splice(botInArr, 1) : null
-    this.setState({
-      myArmy: army
-    })
+    if (army.includes(bot)){
+      let botInArr = army.indexOf(bot)
+      let removedBot = botInArr != -1 ? army.splice(botInArr, 1) : null
+      this.setState({
+        myArmy: army
+      })
+    } else {null}
   }
+
+
 
   render() {
     return (
