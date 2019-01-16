@@ -19,12 +19,13 @@ const BotCard = props => {
       botType = <div />;
   }
 
+
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={() => props.removeFromArmy(bot)}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -33,7 +34,6 @@ const BotCard = props => {
           <div className="header">
             {bot.name} {botType}
           </div>
-
           <div className="meta text-wrap">
             <small>{bot.catchphrase}</small>
           </div>
