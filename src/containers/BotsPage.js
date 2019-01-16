@@ -1,6 +1,7 @@
 import React from "react";
 import YourBotArmy from './YourBotArmy';
 import BotCollection from './BotCollection';
+import BotSpecs from '../components/BotSpecs'
 
 class BotsPage extends React.Component {
   //start here with your code for step one
@@ -11,16 +12,27 @@ class BotsPage extends React.Component {
     this.state = {
       botList: [],
       yourList: [],
+      showSpec: false,
+      currentBot: {}
     }
   }
 
-  addOnClick = (bot) => {
-    if(!this.state.yourList.includes(bot)){
-    let newArr = [...this.state.yourList]
-    newArr.push(bot)
+  handleAddButton = () => {
+    if(!this.state.yourList.includes(this.state.currentBot)){
+      let newArr = [...this.state.yourList]
+      newArr.push(this.state.currentBot)
+  
+      this.setState({yourList: newArr})
+      }
+  }
 
-    this.setState({yourList: newArr})
-    }
+  handleGoBack = () => {
+    this.setState({showSpec : !this.state.showSpec})
+  }
+
+  addOnClick = (bot) => {
+    this.setState({showSpec: !this.state.showSpec})
+    this.setState({currentBot: bot})
   }
 
   removeOnClick = (sentBot) => {
@@ -41,11 +53,24 @@ class BotsPage extends React.Component {
   }
 
   render() {
+
+    const showSpecs = {
+      display: (this.state.showSpec ? 'block' : 'none')
+    }
+
+    const showColl = {
+      display: (this.state.showSpec ? 'none' : 'block')
+    }
+
     return (
       <div>
         <YourBotArmy botList={this.state.yourList} removeOnClick={this.removeOnClick}/>
-        <BotCollection botList={this.state.botList} addOnClick={this.addOnClick}/>
-        {/* put your components here */}
+        <div style={showColl}>
+          <BotCollection botList={this.state.botList} addOnClick={this.addOnClick}/>
+        </div>
+        <div style={showSpecs}>
+          <BotSpecs bot={this.state.currentBot} handleAddButton={this.handleAddButton} handleGoBack={this.handleGoBack}/>
+        </div>
       </div>
     );
   }
