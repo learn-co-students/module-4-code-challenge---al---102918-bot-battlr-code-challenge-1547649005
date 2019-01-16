@@ -42,6 +42,9 @@ class BotsPage extends React.Component {
         armyArr : arr
       })
     }
+    this.setState({
+      display: !this.state.display
+    })
   }
 
   toggleDisplay = () => {
