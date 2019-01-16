@@ -7,7 +7,8 @@ class BotsPage extends React.Component {
   //start here with your code for step one
   state={
     bots: [],
-    botArmy:[]
+    botArmy:[],
+    detailClick: false
   }
 
   fetchBots = () => {
@@ -42,14 +43,22 @@ class BotsPage extends React.Component {
 
   }
 
+  handleDetail = () => {
+    const detail = this.state.detailClick
+    this.setState({
+      detailClick: !detail
+    })
+  }
+
   render() {
+    console.log(this.state.detailClick);
     return (
       <div>
       <div>
       <YourBotArmy bots={this.state.botArmy} handleClick={this.handleRemoveBot}/>
       </div>
         <div>
-        <BotCollection bots={this.state.bots} handleClick={this.handleAddBot}/>
+        <BotCollection bots={this.state.bots} handleClick={this.handleAddBot} renderDetails={this.handleDetail} detailClick={this.state.detailClick}/>
         </div>
       </div>
     );

@@ -3,7 +3,9 @@ import BotsPage from "./containers/BotsPage";
 import "./App.css";
 
 class App extends Component {
+
   render() {
+    alert(' Double Click the BOT To Remove From Army ' )
     return (
       <div className="App">
         <BotsPage />
