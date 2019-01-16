@@ -38,6 +38,16 @@ class BotsPage extends React.Component {
  }
  }
 
+ removeFromYourBots =(bot) => {
+  let  newArr = this.state.yourBots.filter((yourBot) => {
+     return yourBot.id !== bot.id
+   })
+   console.log(newArr)
+   this.setState({
+     yourBots: newArr
+   })
+ }
+
 
   render() {
     console.log(this.state.botList)
@@ -49,6 +59,7 @@ class BotsPage extends React.Component {
           />
         <YourBotArmy
           yourBots={this.state.yourBots}
+          clickHandler={this.removeFromYourBots}
           />
       </div>
     );
