@@ -1,10 +1,13 @@
 import React from "react";
 import BotCollection from "../containers/BotCollection";
 import YourBotArmy from "../containers/YourBotArmy";
+import BotSpecs from "../components/BotSpecs";
 
 class BotsPage extends React.Component {
   state = {
-    chosen: []
+    chosen: [],
+    showBotSpecs: false,
+    showBot: {}
   };
 
   clickAddHandler = bot => {
@@ -28,6 +31,13 @@ class BotsPage extends React.Component {
     });
   };
 
+  clickShowBotSpecsHandler = bot => {
+    this.setState({
+      showBotSpecs: !this.state.showBotSpecs,
+      showBot: bot
+    });
+  };
+
   render() {
     return (
       <div>
@@ -35,10 +45,19 @@ class BotsPage extends React.Component {
           botList={this.state.chosen}
           clickHandler={this.clickRemoveHandler}
         />
-        <BotCollection
-          botList={this.props.botList}
-          clickHandler={this.clickAddHandler}
-        />
+
+        {this.state.showBotSpecs ? (
+          <BotSpecs
+            bot={this.state.showBot}
+            clickAddHandler={this.clickAddHandler}
+            clickShowBotSpecsHandler={this.clickShowBotSpecsHandler}
+          />
+        ) : (
+          <BotCollection
+            botList={this.props.botList}
+            clickHandler={this.clickShowBotSpecsHandler}
+          />
+        )}
       </div>
     );
   }
