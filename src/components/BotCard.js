@@ -1,4 +1,5 @@
 import React from "react";
+import BotSpecs from "./BotSpecs"
 
 const BotCard = props => {
   const { bot } = props;
@@ -19,12 +20,23 @@ const BotCard = props => {
       botType = <div />;
   }
 
-  return (
-    <div className="ui column">
+  // const displaySpecs = () =>{
+  //   props.showSpecs( <BotSpecs bot={bot}/>)
+  // }
+
+  const handleClick = () =>{
+
+    props.showDetails ? props.toggleDetails(bot) : props.toggleDetails(bot)
+    // props.addOrRemove(props.bot)
+
+  }
+
+  if (!props.showDetails) {
+    return  (<div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={handleClick}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -54,8 +66,14 @@ const BotCard = props => {
           </span>
         </div>
       </div>
-    </div>
-  );
+
+
+    </div>)}
+    else{
+      return <BotSpecs toggleAllBots={props.toggleAllBots}bot={bot}/>
+      }
+
+
 
 };
 
