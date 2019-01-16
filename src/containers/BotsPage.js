@@ -33,7 +33,8 @@ class BotsPage extends React.Component {
       let newArr = [...this.state.armyArr]
       newArr.push(bot)
       this.setState({
-        armyArr : newArr
+        armyArr : newArr,
+        display: !this.state.display
       })
     }
     else {
@@ -42,9 +43,6 @@ class BotsPage extends React.Component {
         armyArr : arr
       })
     }
-    this.setState({
-      display: !this.state.display
-    })
   }
 
   toggleDisplay = () => {
@@ -62,7 +60,7 @@ class BotsPage extends React.Component {
       <div>
         <YourBotArmy
           bots = {this.state.armyArr}
-          handleClick = {this.handleClick}
+          handleClick = {this.enlist}
         />
         <BotCollection
           display = {this.state.display}
