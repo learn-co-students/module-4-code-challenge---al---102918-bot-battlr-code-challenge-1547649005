@@ -6,7 +6,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      bots: []
+      bots: [],
+      army: []
     };
   }
 
@@ -16,13 +17,49 @@ class App extends Component {
     );
     const data = await response.json();
     this.setState({
-      bots: data
+      bots: data,
+      army: []
     });
   }
+
+  addToArmy2 = botSelected => {
+    this.state.bots.filter(bot => {
+      if (bot.id === botSelected.id) {
+        this.setState({
+          army: bot
+        });
+      }
+    });
+  };
+
+  addToArmy = botSelected => {
+    let newBots = [...this.state.bots];
+    let newArmy = [...this.state.army];
+    newBots = this.state.bots.filter(bot => {
+      if (bot.id === botSelected.id) {
+        newArmy.push(bot);
+      }
+      return bot.id !== botSelected;
+    });
+    this.setState({
+      bots: newBots,
+      army: newArmy
+    });
+  };
+
+  // filteredList = botSelected => {
+  //   return this.state.bots.filter(bot => bot.id !== botSelected.id);
+  // };
+
   render() {
+    console.log(this.state.bots);
     return (
       <div className="App">
-        <BotsPage bots={this.state.bots} />
+        <BotsPage
+          bots={this.state.bots}
+          army={this.state.army}
+          addToArmy={this.addToArmy}
+        />
       </div>
     );
   }
