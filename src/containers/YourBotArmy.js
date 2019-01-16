@@ -1,5 +1,6 @@
 import React from "react";
-import BotCard from "../components/BotCard";
+// import BotCard from "../components/BotCard";
+import MyBotCard from '../components/MyBotCard';
 
 class YourBotArmy extends React.Component {
   //your bot army code here...
@@ -11,6 +12,7 @@ class YourBotArmy extends React.Component {
           <div className="row bot-army-row">
             {/*...and here...*/}
             Your Bot Army
+            {this.props.mybots.map(bot=><MyBotCard key={bot.id}  bot={bot} removeHandler={this.props.removeHandler}/>)}
           </div>
         </div>
       </div>
