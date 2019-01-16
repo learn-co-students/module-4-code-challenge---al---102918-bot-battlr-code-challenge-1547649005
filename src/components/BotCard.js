@@ -23,7 +23,9 @@ const BotCard = props => {
     <div className="ui column">
       <div className="ui card" key={bot.id} onClick={() => clickHandler(bot)}>
         <div className="image">
-          <img alt="oh no!" src={bot.avatar_url} />
+          <figure>
+            <img alt="oh no!" src={bot.avatar_url} />
+          </figure>
         </div>
         <div className="content">
           <div className="header">
