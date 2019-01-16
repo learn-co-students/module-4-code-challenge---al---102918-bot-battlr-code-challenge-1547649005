@@ -22,24 +22,15 @@ class App extends Component {
     });
   }
 
-  addToArmy2 = botSelected => {
-    this.state.bots.filter(bot => {
-      if (bot.id === botSelected.id) {
-        this.setState({
-          army: bot
-        });
-      }
-    });
-  };
-
   addToArmy = botSelected => {
     let newBots = [...this.state.bots];
     let newArmy = [...this.state.army];
     newBots = this.state.bots.filter(bot => {
       if (bot.id === botSelected.id) {
         newArmy.push(bot);
+        newBots.pop(bot);
       }
-      return bot.id !== botSelected;
+      return bot;
     });
     this.setState({
       bots: newBots,
