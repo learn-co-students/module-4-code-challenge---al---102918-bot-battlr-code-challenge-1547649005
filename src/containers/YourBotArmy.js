@@ -17,16 +17,16 @@ class YourBotArmy extends React.Component {
     return (
 
       <div className="ui segment inverted olive bot-army">
+      <select onChange= {this.props.changeHandler} className = "filter-dropdown">
+        <option value ='' >Filter by Class </option>
+        <option value = 'support'>Support</option>
+        <option value = 'assault'>Assault</option>
+        <option value = 'defender'>Defender</option>
+      </select>
         <div className="ui five column grid">
           <div className="row bot-army-row">
             {this.botList()}
           </div>
-            <select onChange= {this.props.changeHandler}>
-              <option value ='' >Filter by Class </option>
-              <option value = 'support'>Support</option>
-              <option value = 'assault'>Assault</option>
-              <option value = 'defender'>Defender</option>
-            </select>
         </div>
       </div>
     );
