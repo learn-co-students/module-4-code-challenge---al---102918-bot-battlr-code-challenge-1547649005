@@ -10,15 +10,19 @@ class BotsPage extends React.Component {
   }
 
   addHandler=(bot) => {
+    console.log(bot);
+    if(!this.state.mybots.includes(bot)){
     this.setState({
       mybots:[...this.state.mybots, bot]
     })
+  }
     
   }
 
   removeHandler=(mybot) => {
+    const myNewBots=[...this.state.mybots]
     this.setState({
-      mybots:this.state.mybots.filter(bot=>bot!==mybot)
+      mybots:myNewBots.filter(bot=>bot!==mybot)
     })
     
   }

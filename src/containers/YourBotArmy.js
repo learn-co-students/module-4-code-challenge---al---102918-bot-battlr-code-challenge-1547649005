@@ -12,7 +12,7 @@ class YourBotArmy extends React.Component {
           <div className="row bot-army-row">
             {/*...and here...*/}
             Your Bot Army
-            {this.props.mybots.map(bot=><MyBotCard key={bot.id}  bot={bot} removeHandler={this.props.removeHandler}/>)}
+            {this.props.mybots.map((bot,i)=><MyBotCard key={i}  bot={bot} removeHandler={this.props.removeHandler}/>)}
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 // import { MyBotCard } from 'module';
 
 const MyBotCard=(props) => {
-    const {bot, removeHandler} = props
+    const {bot, removeHandler} = props;
 
     let botType;
 
