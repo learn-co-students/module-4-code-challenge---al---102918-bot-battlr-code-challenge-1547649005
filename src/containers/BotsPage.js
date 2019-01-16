@@ -7,7 +7,7 @@ class BotsPage extends React.Component {
 
   state = {
     allBots: [],
-    botArmy: []
+    botArmy: [],
   }
 
   componentDidMount = () =>{
@@ -32,12 +32,15 @@ class BotsPage extends React.Component {
   }
 
 
+
   render() {
-    console.log(this.state.allBots);
+
     return (
       <div>
-        <YourBotArmy bots={this.state.botArmy} addOrRemove={this.removeBot}/>
-        <BotCollection allBots={this.state.allBots} addOrRemove={this.addToArmy}/>
+        <YourBotArmy toggleDetails={this.removeBot} bots={this.state.botArmy} addOrRemove={this.removeBot}/>
+
+        <BotCollection  allBots={this.state.allBots} addOrRemove={this.addToArmy} />)
+
       </div>
     );
   }
