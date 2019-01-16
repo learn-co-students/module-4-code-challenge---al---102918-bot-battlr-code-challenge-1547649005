@@ -1,7 +1,8 @@
 import React from "react";
 import YourBotArmy from './YourBotArmy';
 import BotCollection from './BotCollection';
-import BotSpecs from '../components/BotSpecs'
+import BotSpecs from '../components/BotSpecs';
+import ClassFilter from '../components/ClassFilter';
 
 class BotsPage extends React.Component {
   //start here with your code for step one
@@ -13,7 +14,8 @@ class BotsPage extends React.Component {
       botList: [],
       yourList: [],
       showSpec: false,
-      currentBot: {}
+      currentBot: {},
+      filteredKey: '',
     }
   }
 
@@ -52,7 +54,24 @@ class BotsPage extends React.Component {
       })
   }
 
+  handleSubmit = (e) =>{
+    e.preventDefault()
+    console.log(e.target.value)
+    this.setState({filteredKey: e.target.value})
+  }
+
   render() {
+
+    let filteredArray = this.state.botList
+
+    if(this.state.filteredKey !== ''){
+      filteredArray.filter((bot)=>{
+        //debugger
+        return bot.bot_class === this.state.filteredKey
+      })
+    }
+
+    console.log(filteredArray.length)
 
     const showSpecs = {
       display: (this.state.showSpec ? 'block' : 'none')
@@ -64,9 +83,10 @@ class BotsPage extends React.Component {
 
     return (
       <div>
+        <ClassFilter handleSubmit={this.handleSubmit}/>
         <YourBotArmy botList={this.state.yourList} removeOnClick={this.removeOnClick}/>
         <div style={showColl}>
-          <BotCollection botList={this.state.botList} addOnClick={this.addOnClick}/>
+          <BotCollection botList={filteredArray} addOnClick={this.addOnClick}/>
         </div>
         <div style={showSpecs}>
           <BotSpecs bot={this.state.currentBot} handleAddButton={this.handleAddButton} handleGoBack={this.handleGoBack}/>
