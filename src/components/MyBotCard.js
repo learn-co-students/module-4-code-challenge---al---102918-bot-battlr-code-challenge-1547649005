@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
+// import { MyBotCard } from 'module';
 
-const BotCard = props => {
-  const { bot, addHandler, showBotSpecHandler } = props;
+const MyBotCard=(props) => {
+    const {bot, removeHandler} = props;
 
-  let botType;
+    let botType;
 
   switch (bot.bot_class) {
     case "Assault":
@@ -19,13 +20,13 @@ const BotCard = props => {
       botType = <div />;
   }
 
-  return (
-    <div className="ui column">
+
+    return(
+        <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        // onClick={() =>addHandler(bot)}
-        onClick={() =>showBotSpecHandler(bot)}
+        onClick={() =>removeHandler(bot)}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
@@ -57,7 +58,5 @@ const BotCard = props => {
       </div>
     </div>
   );
-
-};
-
-export default BotCard;
+}
+export default MyBotCard;
