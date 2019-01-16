@@ -25,10 +25,13 @@ class BotsPage extends React.Component {
   }
 
   handleAddBot = (botObj) => {
-    const botArmy = [...this.state.botArmy, botObj]
-    this.setState({
-      botArmy
-    })
+    if (!this.state.botArmy.includes(botObj)) {
+      const botArmy = [...this.state.botArmy, botObj]
+      this.setState({
+        botArmy
+      })
+
+    }
   }
 
   handleRemoveBot = (botObj) => {
