@@ -17,9 +17,9 @@ class ClassFilter extends React.Component{
 
     render(){
         return (
-
+            
             <div>
-                <form onSubmit={(e) => this.props.handleSubmit}>
+                <form onSubmit={(e) => this.props.handleSubmit(e, this.state.input)}>
                 <input onChange={this.handleOnChange} type="text" value={this.state.input} placeholder="Filter by bot_class"/>
                 <input type="submit"/>
                 </form>

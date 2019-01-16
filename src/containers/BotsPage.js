@@ -54,10 +54,9 @@ class BotsPage extends React.Component {
       })
   }
 
-  handleSubmit = (e) =>{
+  handleSubmit = (e, value) =>{
     e.preventDefault()
-    console.log(e.target.value)
-    this.setState({filteredKey: e.target.value})
+    this.setState({filteredKey: value})
   }
 
   render() {
@@ -65,9 +64,10 @@ class BotsPage extends React.Component {
     let filteredArray = this.state.botList
 
     if(this.state.filteredKey !== ''){
-      filteredArray.filter((bot)=>{
+      console.log("object")
+      filteredArray = filteredArray.filter((bot)=>{
         //debugger
-        return bot.bot_class === this.state.filteredKey
+        return bot.bot_class.toLowerCase() === this.state.filteredKey.toLowerCase()
       })
     }
 
