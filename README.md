@@ -19,11 +19,11 @@ All of the code to style the page has been written for you, meaning that you sho
 
 
 ## Instructions
-To start, run `npm install && npm start` to get the app up and running. Follow along with these steps, making sure to read all of the instructions before beginning to code.
+<!-- To start, run `npm install && npm start` to get the app up and running. Follow along with these steps, making sure to read all of the instructions before beginning to code. -->
 
 #### 1.  Fetching Bots
 
-Work on fetching data from this API: https://bot-battler-api.herokuapp.com/api/v1/bots. The response should contain an array of bot objects that are structured as follows:
+<!-- Work on fetching data from this API: https://bot-battler-api.herokuapp.com/api/v1/bots. The response should contain an array of bot objects that are structured as follows: -->
 
   ```json
     {
@@ -40,19 +40,19 @@ Work on fetching data from this API: https://bot-battler-api.herokuapp.com/api/v
     }
   ```
 
-Based on the current structure of the app, think about where this array of bots needs to be stored.
+<!-- Based on the current structure of the app, think about where this array of bots needs to be stored. -->
 
 
 #### 2.  Indexing bots
 
-After you have fetched the bots, work on rendering them into `BotCollection`, which should be a child of `BotsPage`. A component called `BotCard` has been provided to you to display the information about an individual bot in a list format.
+<!-- After you have fetched the bots, work on rendering them into `BotCollection`, which should be a child of `BotsPage`. A component called `BotCard` has been provided to you to display the information about an individual bot in a list format. -->
 
 
 #### 3.  Enlisting bots
 
-Once the list is complete, work on the functionality of enlisting bots into your army. Clicking a card should add a bot to the user's list of bots. Bots that have been chosen should be displayed within `YourBotArmy`, which should also be a child of `BotsPage`  (feel free to reuse `BotCard`). A bot should be enlisted only once. If you click on a bot in your army, that bot should be removed from your army.
+<!-- Once the list is complete, work on the functionality of enlisting bots into your army. Clicking a card should add a bot to the user's list of bots. Bots that have been chosen should be displayed within `YourBotArmy`, which should also be a child of `BotsPage`  (feel free to reuse `BotCard`). A bot should be enlisted only once. If you click on a bot in your army, that bot should be removed from your army.
 
-_Note that nothing needs to be persisted. Refreshing the page should clear out the current army._
+_Note that nothing needs to be persisted. Refreshing the page should clear out the current army._ -->
 
 
 ## Checkpoint!
