@@ -6,17 +6,25 @@ class BotsPage extends React.Component {
 
   state={
     bots:[],
-    mybots:[]
+    mybots:[],
+    botSpec:[]
   }
 
   addHandler=(bot) => {
-    console.log(bot);
+    // console.log(bot);
     if(!this.state.mybots.includes(bot)){
-    this.setState({
-      mybots:[...this.state.mybots, bot]
-    })
-  }
+      this.setState({
+        mybots:[...this.state.mybots, bot]
+      })
+    }
     
+  }
+  
+  showBotSpecHandler=(bot) => {
+    console.log('inside show', bot);
+    this.setState({
+      botSpec:bot
+    })
   }
 
   removeHandler=(mybot) => {
@@ -38,7 +46,8 @@ class BotsPage extends React.Component {
     return (
       <div>
         <YourBotArmy mybots={this.state.mybots} removeHandler={this.removeHandler}/>
-        <BotCollection bots={this.state.bots} addHandler={this.addHandler}/>
+        <BotCollection bots={this.state.bots} addHandler={this.addHandler} 
+        showBotSpec={this.state.botSpec} showBotSpecHandler={this.showBotSpecHandler}/>
         
         {/* put your components here */}
       </div>
