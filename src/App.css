@@ -12,3 +12,10 @@
 .ui.grid {
   padding: 0px 20px;
 }
+
+.search-form {
+  margin-top: 50px;
+  margin-left: 40%;
+  margin-bottom: 50px;
+  border-radius: 4px;
+}
