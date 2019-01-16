@@ -27,7 +27,16 @@ class BotsPage extends React.Component {
         console.log(this.state);
       } else null;
     } else {
-      console.log("from");
+      if (bot.state.clicked === false) {
+        let unclickingBot = [...this.state.clickedBots];
+        var index = unclickingBot.indexOf(bot);
+        console.log(index);
+
+        unclickingBot.splice(index, 1);
+        this.setState({
+          clickedBots: unclickingBot
+        });
+      }
     }
   };
 
