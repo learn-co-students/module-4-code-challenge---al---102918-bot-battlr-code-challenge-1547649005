@@ -1,16 +1,21 @@
 import React from "react";
+import BotCollection from "./BotCollection";
 
 class BotsPage extends React.Component {
-  //start here with your code for step one
+  constructor() {
+    super();
+    this.state = {};
+  }
 
   render() {
     return (
       <div>
-        {/* put your components here */}
+        {this.props.bots.map(bot => (
+          <BotCollection key={bot.id} bot={bot} />
+        ))}
       </div>
     );
   }
-
 }
 
 export default BotsPage;
